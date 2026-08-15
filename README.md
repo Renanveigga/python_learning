@@ -90,7 +90,7 @@ A estrutura poderá ser modificada conforme novos conteúdos e projetos forem ad
 
 Alguns dos projetos que pretendo desenvolver durante essa jornada:
 
-* [ ] Calculadora
+* [x] Calculadora
 * [ ] Jogo de adivinhação
 * [ ] Pedra, papel e tesoura
 * [ ] Quiz
