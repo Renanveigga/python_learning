@@ -1,0 +1,57 @@
+* Objetivo Desenvolver um programa de terminal que permita cadastrar produtos e, ao final, exibir algumas estatísticas.
+
+Requisitos obrigatórios
+
+O programa deve permitir:
+
+1- Cadastrar vários produtos.
+
+2- Para cada produto, solicitar:
+  * Nome
+  * Preço
+
+3- Continuar cadastrando produtos até que o usuário escolha parar.
+
+4- Ao finalizar, mostrar:
+  * Quantidade de produtos cadastrados;
+  * Produto mais caro;
+  * Produto mais barato;
+  * Preço médio dos produtos.
+
+
+
+
+===== CADASTRO DE PRODUTOS =====
+
+Nome do produto: Teclado
+Preço: 120
+
+Deseja cadastrar outro produto? [s/n]: s
+
+Nome do produto: Mouse
+Preço: 80
+
+Deseja cadastrar outro produto? [s/n]: s
+
+Nome do produto: Monitor
+Preço: 900
+
+Deseja cadastrar outro produto? [s/n]: n
+
+
+===== RESULTADO =====
+
+Produtos cadastrados: 3
+Produto mais caro: Monitor - R$ 900.00
+Produto mais barato: Mouse - R$ 80.00
+Preço médio: R$ 366.67
+
+
+
+    Regras
+    
+O preço não pode ser negativo.
+O programa não pode quebrar caso o usuário digite uma opção inválida.
+Use funções para organizar o código.
+Não utilize bibliotecas externas.
+O programa deve funcionar pelo terminal.
