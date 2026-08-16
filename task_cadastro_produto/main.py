@@ -5,10 +5,33 @@ def exibir_produtos():
               print("Nenhum item cadastrado")
               return
          
-         print("\nprodutos cadastrados!")
+         print("\n====produtos cadastrados=====")
+         print(f"{len(produto)} produtos cadastrados")
          for nome, preco in produto.items():
-            print(f"{len(produto)} produtos cadastrados")
             print(f"produto: {nome}, preço: R${preco:.2f}\n")
+
+def remover_produto(): 
+
+    if not produto:
+        print("\nNenhum produto cadastrado para remover.")
+        return # Para a função se não houver produto a ser removido
+    
+    while True:
+      item_escolhido = input("Digite o produto que deseja excluir: ").strip()
+
+      if item_escolhido not in produto:
+          print("Produto não encontrado!")
+
+          continue
+      break
+
+    confirmacao = input(f"Deseja mesmo excluir {item_escolhido} [s/n]: ").lower().strip()
+
+    if confirmacao == 's':
+      del(produto[item_escolhido])   
+      print(f"Produto {item_escolhido} excluído com sucesso!\n")  
+    else:
+        print("Cancelando exclusão\n") 
 
 def sair():
     print("Saindo do programa...")
@@ -18,13 +41,21 @@ def menu_cadastro_produto():
     print("===== MENU DE CADASTRO DE PRODUTOS =====")
     print("1. Cadastrar Produto")
     print("2. Listar Produtos")
-    print("3. Sair")
+    print("3. Excluir Produto")
+    print("4. Sair")
 
     opcao = input("Escolha uma opção: ")
 
     if opcao == "1":
         print("===== CADASTRO DE PRODUTOS =====")
-        nome_produto = input("Digite o nome do produto: ")
+
+        while True:
+            nome_produto = input("Digite o nome do produto: ").strip()
+
+            if not nome_produto:
+                print("Digite um nome válido")
+                continue
+            break
 
         while True:
             try:
@@ -38,13 +69,18 @@ def menu_cadastro_produto():
                 break  # Se o número for válido e maior ou igual a zero, quebra o laço 'while'
 
             except ValueError:
-                print("\nDigite uma opção válida de preço (use ponto para decimais).")
+                print("\nDigite uma opção válida de preço.")
 
+        produto[nome_produto] = preco_produto
+        print(f"Produto '{nome_produto}' cadastrado com sucesso!\n")        
         
     elif opcao == "2":
         exibir_produtos()   
 
     elif opcao == "3":
+        remover_produto()    
+
+    elif opcao == "4":
         sair()
 
     else:
