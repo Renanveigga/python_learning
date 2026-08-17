@@ -53,10 +53,10 @@ def estatisticas():
         return
 
     total = len(produto) #total de produtos dentro do dicionário
-    maior_preco = max(produto) #verifica maior valor dentro do dicionário
+    maior_preco = max(produto, key=produto.get) #verifica maior valor dentro do dicionário
     preco_maior = produto[maior_preco]
 
-    menor_preco = min(produto) #verifica menor dentro do dicionário
+    menor_preco = min(produto, key=produto.get) #verifica menor dentro do dicionário
     preco_menor = produto[menor_preco]
 
     media_preco = sum(produto.values()) / total # Soma todos os valores e divide pelo total de itens
@@ -68,7 +68,7 @@ def estatisticas():
     print(f" Produto mais barato:")
     print(f"{menor_preco} - R${preco_menor:.2f}\n")
     print(f"Preço médio: ")
-    print(f"R${media_preco}")
+    print(f"R${media_preco:.2f}")
 
 def sair():
     print("Saindo do programa...")
