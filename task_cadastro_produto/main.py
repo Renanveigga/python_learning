@@ -33,6 +33,24 @@ def remover_produto():
     else:
         print("Cancelando exclusão\n") 
 
+def buscar_produto():
+    while True:
+     try:
+        busca = input("Digite um produto a ser buscado: ")
+
+        if busca in produto:
+            print("\nProduto encontrado!")
+            print(f"Nome: {busca}")
+            print(f"Preço: {produto[busca]}\n")
+            break
+        else:
+            print("\nProduto não encontrado!\n")
+
+     except ValueError:
+        print(f"Erro ao buscar produto: {busca}")
+
+
+
 def sair():
     print("Saindo do programa...")
     exit() # função exit() encerra o programa
@@ -41,8 +59,9 @@ def menu_cadastro_produto():
     print("===== MENU DE CADASTRO DE PRODUTOS =====")
     print("1. Cadastrar Produto")
     print("2. Listar Produtos")
-    print("3. Excluir Produto")
-    print("4. Sair")
+    print("3. Buscar Produto")
+    print("4. Excluir Produto")
+    print("5. Sair")
 
     opcao = input("Escolha uma opção: ")
 
@@ -51,9 +70,11 @@ def menu_cadastro_produto():
 
         while True:
             nome_produto = input("Digite o nome do produto: ").strip()
-
+            
             if not nome_produto:
                 print("Digite um nome válido")
+            elif nome_produto in produto:
+                print(f"Produto {nome_produto} já cadastrado ⚠")   
                 continue
             break
 
@@ -78,9 +99,12 @@ def menu_cadastro_produto():
         exibir_produtos()   
 
     elif opcao == "3":
-        remover_produto()    
+        buscar_produto()    
 
     elif opcao == "4":
+        remover_produto()    
+
+    elif opcao == "5":
         sair()
 
     else:
