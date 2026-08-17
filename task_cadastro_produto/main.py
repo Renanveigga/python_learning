@@ -34,22 +34,41 @@ def remover_produto():
         print("Cancelando exclusão\n") 
 
 def buscar_produto():
-    while True:
-     try:
-        busca = input("Digite um produto a ser buscado: ")
+ 
+        busca = input("Digite um produto a ser buscado: ").strip()
 
         if busca in produto:
+            preco = produto[busca]
             print("\nProduto encontrado!")
             print(f"Nome: {busca}")
-            print(f"Preço: {produto[busca]}\n")
-            break
+            print(f"Preço: R${preco:.2f}\n")
+             
         else:
-            print("\nProduto não encontrado!\n")
+            print("\nProduto não encontrado!\n")    
+           
+def estatisticas():
 
-     except ValueError:
-        print(f"Erro ao buscar produto: {busca}")
+    if not produto: 
+        print("\nNenhum produto cadastrado para gerar estatísticas.")
+        return
 
+    total = len(produto) #total de produtos dentro do dicionário
+    maior_preco = max(produto) #verifica maior valor dentro do dicionário
+    preco_maior = produto[maior_preco]
 
+    menor_preco = min(produto) #verifica menor dentro do dicionário
+    preco_menor = produto[menor_preco]
+
+    media_preco = sum(produto.values()) / total # Soma todos os valores e divide pelo total de itens
+
+    print("\n===== ESTATÍSTICAS =====")
+    print(f"Total de produtos: {total}")
+    print(f"\nProduto mais caro:")
+    print(f"{maior_preco} - R${preco_maior:.2f}\n")
+    print(f" Produto mais barato:")
+    print(f"{menor_preco} - R${preco_menor:.2f}\n")
+    print(f"Preço médio: ")
+    print(f"R${media_preco}")
 
 def sair():
     print("Saindo do programa...")
@@ -61,7 +80,8 @@ def menu_cadastro_produto():
     print("2. Listar Produtos")
     print("3. Buscar Produto")
     print("4. Excluir Produto")
-    print("5. Sair")
+    print("5. Estatísticas")
+    print("6. Sair")
 
     opcao = input("Escolha uma opção: ")
 
@@ -69,7 +89,7 @@ def menu_cadastro_produto():
         print("===== CADASTRO DE PRODUTOS =====")
 
         while True:
-            nome_produto = input("Digite o nome do produto: ").strip()
+            nome_produto = input("Digite o nome do produto: ").lower().strip()
             
             if not nome_produto:
                 print("Digite um nome válido")
@@ -105,7 +125,9 @@ def menu_cadastro_produto():
         remover_produto()    
 
     elif opcao == "5":
-        sair()
+        estatisticas()
+    elif opcao == "6":
+        sair()    
 
     else:
          print("\nOpçao inválida")
