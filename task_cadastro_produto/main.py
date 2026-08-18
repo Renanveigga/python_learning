@@ -1,5 +1,5 @@
 produto = {
-    "pc": {"preco": 2000.0, "categoria": "informática", "estoque": 3}
+    "pc": {"preco": 2000.0, "categoria": "informática", "estoque": 10}
 }
 categoria_produto = ["informática", "cosmético", "utilidade","outro"]  # adicionar categoria e qtd. estoque
 
@@ -75,10 +75,24 @@ def estatisticas():
 
 def estoque_baixo ():
     limite = 5
+
     print("===== ESTOQUE BAIXO =====")
-    for nome, dados in produto.items():
-        if dados['estoque'] < limite:
+
+    if not produto:
+        print("Nenhum produto encontrado!")
+    else:
+     houve_alerta = False  # Variável de controle
+     for nome, dados in produto.items():
+
+        if dados['estoque'] <= limite:
+         
          print(f"O produto {nome} tem apenas {dados['estoque']} unidades")
+         houve_alerta = True  # Marca que encontrou pelo menos um
+
+        if not houve_alerta:
+         print("Nenhum produto está com estoque baixo.")
+         
+
 
 def sair():
     print("Saindo do programa...")
@@ -128,8 +142,7 @@ def menu_cadastro_produto():
         #CADASTRA A CATEGORIA
         while True:
            
-           print("\nCategorias disponíveis:", ", ".join(categoria_produto)) #.join uni as strings 
-           print (f"{categoria_produto}")   
+           print("\nCategorias disponíveis:", ", ".join(categoria_produto)) #.join uni as strings   
            escolha_categ = input("Qual categoria deseja escolher: ").lower().strip()
            if escolha_categ not in categoria_produto:
             print("Escolha uma categoria válida")
