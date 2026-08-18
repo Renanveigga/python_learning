@@ -1,4 +1,5 @@
 produto = {"pc": 2000}
+categoria_produto = ["informática", "cosmético", "utilidade","outro"]  # adicionar categoria e qtd. estoque
 
 def exibir_produtos():
          if not produto:
@@ -7,8 +8,8 @@ def exibir_produtos():
          
          print("\n====produtos cadastrados=====")
          print(f"{len(produto)} produtos cadastrados")
-         for nome, preco in produto.items():
-            print(f"produto: {nome}, preço: R${preco:.2f}\n")
+         for nome, preco, categoria_produto in produto.items():
+            print(f"produto: {nome}, preço: R${preco:.2f} e categoria {categoria_produto}\n")
 
 def remover_produto(): 
 
@@ -81,7 +82,8 @@ def menu_cadastro_produto():
     print("3. Buscar Produto")
     print("4. Excluir Produto")
     print("5. Estatísticas")
-    print("6. Sair")
+    print("6. Produtos com estoque baixo")
+    print("7. Sair")
 
     opcao = input("Escolha uma opção: ")
 
@@ -112,7 +114,22 @@ def menu_cadastro_produto():
             except ValueError:
                 print("\nDigite uma opção válida de preço.")
 
+        while True:
+          try:
+           print ("Escolha a categoria do produto entre essas opções") 
+           print (f"{categoria_produto}")   
+           escolha_categ = input("Qual categoria deseja escolher: ").lower().strip
+           if escolha_categ not in categoria_produto:
+            print("Escolha uma categoria válida")
+            continue
+
+           break
+          except ValueError:
+              print("Não é uma categoria pré-determinada, escolha outra") 
+
+
         produto[nome_produto] = preco_produto
+        produto[categoria_produto] = escolha_categ
         print(f"Produto '{nome_produto}' cadastrado com sucesso!\n")        
         
     elif opcao == "2":
@@ -126,7 +143,8 @@ def menu_cadastro_produto():
 
     elif opcao == "5":
         estatisticas()
-    elif opcao == "6":
+
+    elif opcao == "7":
         sair()    
 
     else:
