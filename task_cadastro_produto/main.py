@@ -1,4 +1,6 @@
-produto = {"pc": 2000}
+produto = {
+    "pc": {"preco": 2000.0, "categoria": "informática"}
+}
 categoria_produto = ["informática", "cosmético", "utilidade","outro"]  # adicionar categoria e qtd. estoque
 
 def exibir_produtos():
@@ -8,8 +10,8 @@ def exibir_produtos():
          
          print("\n====produtos cadastrados=====")
          print(f"{len(produto)} produtos cadastrados")
-         for nome, preco, categoria_produto in produto.items():
-            print(f"produto: {nome}, preço: R${preco:.2f} e categoria {categoria_produto}\n")
+         for nome, datas in produto.items():
+            print(f"produto: {nome}, preço: R${datas['preco']:.2f} e categoria: {datas['categoria']}\n")
 
 def remover_produto(): 
 
@@ -39,10 +41,11 @@ def buscar_produto():
         busca = input("Digite um produto a ser buscado: ").strip()
 
         if busca in produto:
-            preco = produto[busca]
+            datas = produto[busca] #cria uma variável com os dados do dicionário
             print("\nProduto encontrado!")
             print(f"Nome: {busca}")
-            print(f"Preço: R${preco:.2f}\n")
+            print(f"Preço: R${datas['preco']:.2f}\n")
+            print(f"categoria {datas['categoria']}\n")
              
         else:
             print("\nProduto não encontrado!\n")    
@@ -115,21 +118,19 @@ def menu_cadastro_produto():
                 print("\nDigite uma opção válida de preço.")
 
         while True:
-          try:
-           print ("Escolha a categoria do produto entre essas opções") 
+           
+           print("\nCategorias disponíveis:", ", ".join(categoria_produto)) #.join uni as strings 
            print (f"{categoria_produto}")   
-           escolha_categ = input("Qual categoria deseja escolher: ").lower().strip
+           escolha_categ = input("Qual categoria deseja escolher: ").lower().strip()
            if escolha_categ not in categoria_produto:
             print("Escolha uma categoria válida")
             continue
 
            break
-          except ValueError:
-              print("Não é uma categoria pré-determinada, escolha outra") 
 
-
-        produto[nome_produto] = preco_produto
-        produto[categoria_produto] = escolha_categ
+        produto[nome_produto] = { 
+            "preco":preco_produto,
+            "categoria": escolha_categ}
         print(f"Produto '{nome_produto}' cadastrado com sucesso!\n")        
         
     elif opcao == "2":
