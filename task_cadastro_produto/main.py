@@ -1,5 +1,5 @@
 produto = {
-    "pc": {"preco": 2000.0, "categoria": "informática", "estoque": 10}
+"pc": {"preco": 2000.0, "categoria": "informática", "estoque": 10}
 }
 categoria_produto = ["informática", "cosmético", "utilidade","outro"]  # adicionar categoria e qtd. estoque
 
@@ -89,8 +89,8 @@ def estoque_baixo ():
          print(f"O produto {nome} tem apenas {dados['estoque']} unidades")
          houve_alerta = True  # Marca que encontrou pelo menos um
 
-        if not houve_alerta:
-         print("Nenhum produto está com estoque baixo.")
+    if not houve_alerta:
+        print("Nenhum produto está com estoque baixo.")
          
 
 

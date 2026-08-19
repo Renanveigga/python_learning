@@ -97,7 +97,7 @@ Alguns dos projetos que pretendo desenvolver durante essa jornada:
 * [ ] Lista de tarefas
 * [ ] Agenda de contatos
 * [ ] Sistema de notas
-* [ ] Sistema de estoque
+* [x] Sistema de estoque
 * [ ] Controle financeiro
 * [ ] Sistema de biblioteca
 * [ ] API REST
