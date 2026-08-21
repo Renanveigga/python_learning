@@ -94,7 +94,7 @@ Alguns dos projetos que pretendo desenvolver durante essa jornada:
 * [ ] Jogo de adivinhação
 * [ ] Pedra, papel e tesoura
 * [ ] Quiz
-* [ ] Lista de tarefas
+* [x] Lista de tarefas
 * [ ] Agenda de contatos
 * [ ] Sistema de notas
 * [x] Sistema de estoque

@@ -1,0 +1,9 @@
+﻿id,nome,idade,cidade,curso,nota,ativo
+1,João,17,Curitiba,Desenvolvimento de Sistemas,8.5,True
+2,Marina,16,Londrina,Administração,7.2,True
+3,Carlos,18,Maringá,Informática,9.1,False
+4,Ana,17,Ponta Grossa,Desenvolvimento de Sistemas,8.8,True
+5,Lucas,16,Cascavel,Redes,6.9,True
+6,Beatriz,18,Curitiba,Informática,9.5,False
+7,Pedro,17,Londrina,Desenvolvimento de Sistemas,7.8,True
+8,Julia,16,Maringá,Administração,8.1,True
